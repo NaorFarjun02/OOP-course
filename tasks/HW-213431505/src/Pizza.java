@@ -25,6 +25,39 @@ public class Pizza {
         this.onion = pizza.onion;
     }
 
+    public void setSize(int size) {
+        this.size = size;
+    }
+
+    public int getSize() {
+        return this.size;
+    }
+
+    public void setExtraCheese(boolean extraCheese) {
+        this.extraCheese = extraCheese;
+    }
+
+    public boolean getExtraCheese() {
+        return this.extraCheese;
+    }
+
+    public void setOlives(boolean olives) {
+        this.olives = olives;
+    }
+
+    public boolean getOlives() {
+        return this.olives;
+    }
+
+    public void setOnion(boolean onion) {
+        this.onion = onion;
+    }
+
+    public boolean getOnion() {
+        return this.onion;
+    }
+
+
     public int calcCost() {
         int totalCost = 0;
         if (this.size == 0) {
@@ -46,6 +79,7 @@ public class Pizza {
 
         return totalCost;
     }
+
 
     public String toString() {
         String[] sizes = {"Small", "Medium", "Large>"};
