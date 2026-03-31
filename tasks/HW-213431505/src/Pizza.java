@@ -12,17 +12,17 @@ public class Pizza {
     }
 
     public Pizza(int size, boolean extraCheese, boolean olives, boolean onion) {
-        this.size = size;
-        this.extraCheese = extraCheese;
-        this.olives = olives;
-        this.onion = onion;
+        this.setSize(size);
+        this.setExtraCheese(extraCheese);
+        this.setOlives(olives);
+        this.setOnion(onion);
     }
 
     public Pizza(Pizza pizza) {
-        this.size = pizza.size;
-        this.extraCheese = pizza.extraCheese;
-        this.olives = pizza.olives;
-        this.onion = pizza.onion;
+        this.setSize(pizza.size);
+        this.setExtraCheese(pizza.extraCheese);
+        this.setOlives(pizza.olives);
+        this.setOnion(pizza.onion);
     }
 
     public void setSize(int size) {
@@ -87,7 +87,7 @@ public class Pizza {
         pizzeDetails += "Pizza Details:/n";
         pizzeDetails += "Size: " + sizes[this.size] + "/n";
         pizzeDetails += "Extra Cheese: " + this.extraCheese + ", Olives: " + this.olives + ", Onions: " + this.onion + "/n";
-        pizzeDetails += "Price: " + this.calcCost();
+        pizzeDetails += "Price: " + this.calcCost() + "/n";
         return pizzeDetails;
 
     }
