@@ -1,3 +1,6 @@
+// Assignment: 1
+// Author: Naor Farjun, ID: 213431505
+
 import java.util.Scanner;
 
 public class PizzaOrder {
@@ -23,7 +26,7 @@ public class PizzaOrder {
 
     public void order() {
         Scanner input = new Scanner(System.in);
-        System.out.print("Enter number of pizzas for " + this.customer.firstName + ": ");
+        System.out.print("\nEnter number of pizzas for " + this.customer.firstName + ": ");
         int numberOfPizzas = input.nextInt();
         this.pizzas = new Pizza[numberOfPizzas];
         for (int i = 1; i <= numberOfPizzas; i++) {
@@ -75,7 +78,7 @@ public class PizzaOrder {
         isOrdered = ordered;
     }
 
-    public boolean isOrdered() {
+    public boolean getIsOrdered() {
         return isOrdered;
     }
 
@@ -84,18 +87,18 @@ public class PizzaOrder {
         isReady = ready;
     }
 
-    public boolean isReady() {
+    public boolean getIsReady() {
         return isReady;
     }
 
 
     public String toString() {
         String pizzaOrder = "";
-        pizzaOrder += this.customer.toString();
+        pizzaOrder += this.customer.toString() + '\n';
         for (int i = 0; i < this.pizzas.length; i++) {
-            pizzaOrder += "Pizza #" + (i + 1) + ": /n" + this.pizzas[i].toString();
+            pizzaOrder += "Pizza #" + (i + 1) + ": \n" + this.pizzas[i].toString();
         }
-        pizzaOrder += "Total Price: " + this.calcTotal();
+        pizzaOrder += "Total Price: " + this.calcTotal() + '\n';
 
         return pizzaOrder;
     }

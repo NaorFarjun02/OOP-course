@@ -1,3 +1,6 @@
+// Assignment: 1
+// Author: Naor Farjun, ID: 213431505
+
 public class Pizza {
     int size;
     boolean extraCheese;
@@ -82,12 +85,12 @@ public class Pizza {
 
 
     public String toString() {
-        String[] sizes = {"Small", "Medium", "Large>"};
+        String[] sizes = {"Small", "Medium", "Large"};
         String pizzeDetails = "";
-        pizzeDetails += "Pizza Details:/n";
-        pizzeDetails += "Size: " + sizes[this.size] + "/n";
-        pizzeDetails += "Extra Cheese: " + this.extraCheese + ", Olives: " + this.olives + ", Onions: " + this.onion + "/n";
-        pizzeDetails += "Price: " + this.calcCost() + "/n";
+        pizzeDetails += "Pizza Details:\n";
+        pizzeDetails += "Size: " + sizes[this.size] + "\n";
+        pizzeDetails += "Extra Cheese: " + this.extraCheese + ", Olives: " + this.olives + ", Onions: " + this.onion + "\n";
+        pizzeDetails += "Price: " + this.calcCost() + "\n";
         return pizzeDetails;
 
     }

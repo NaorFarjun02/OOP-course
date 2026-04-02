@@ -1,3 +1,6 @@
+// Assignment: 1
+// Author: Naor Farjun, ID: 213431505
+
 public class Customer {
 
     String firstName;
@@ -18,9 +21,9 @@ public class Customer {
 
     public String toString() {
         String customerDetails = "";
-        customerDetails += "Customer Details: /n";
+        customerDetails += "Customer Details: \n";
         customerDetails += "Name: " + this.firstName + " " + this.lastName;
-        customerDetails += "Phone: " + this.phoneNumber;
+        customerDetails += " Phone: " + this.phoneNumber;
 
         return customerDetails;
     }
