@@ -1,3 +1,5 @@
+package publication;
+
 public class MainPublicationA {
 
     public static void main(String[] args) {
@@ -6,7 +8,7 @@ public class MainPublicationA {
         authors[0] = new Author("Harper Lee", "harper@somewhere.com");
         authors[1] = new Author("F. Scott Fitzgerald", "scott@somewhere.com");
         authors[2] = new Author("Amos Oz", "oz@somewhere.com");
-        authors[3] = new Author("Encyclopedia Staff", "staff@encyclopedia.com");
+        authors[3] = new Author("publication.Encyclopedia Staff", "staff@encyclopedia.com");
 
         Book[] books = new Book[3];
         books[0] = new Book(
@@ -63,23 +65,23 @@ public class MainPublicationA {
 
         Encyclopedia[] encyclopedias = new Encyclopedia[3];
         encyclopedias[0] = new Encyclopedia(
-                "Encyclopedia Britannica",
-                "Encyclopedia Britannica, Inc.",
+                "publication.Encyclopedia Britannica",
+                "publication.Encyclopedia Britannica, Inc.",
                 1,
                 "",
                 1
         );
 
         encyclopedias[1] = new Encyclopedia(
-                "Encyclopedia Britannica",
-                "Encyclopedia Britannica, Inc.",
+                "publication.Encyclopedia Britannica",
+                "publication.Encyclopedia Britannica, Inc.",
                 1,
                 "",
                 3
         );
 
         encyclopedias[2] = new Encyclopedia(
-                "Encyclopedia Americana",
+                "publication.Encyclopedia Americana",
                 "Scholastic Corporation",
                 1,
                 "",

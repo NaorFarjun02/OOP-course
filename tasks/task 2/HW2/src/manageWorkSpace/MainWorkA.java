@@ -1,3 +1,5 @@
+package manageWorkSpace;
+
 public class MainWorkA {
 
     public static void main(String[] args) {
