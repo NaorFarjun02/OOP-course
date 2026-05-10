@@ -24,10 +24,10 @@ public class Main {
 
         Apartment[] building1Apartments = new Apartment[B_SIZE];
         building1Apartments[0] = new GardenApartment(101, 120, false, 50, true);
-        building1Apartments[1] = new StandardApartment(201, 80, false, 2, new int[]{5,7});
+        building1Apartments[1] = new StandardApartment(201, 80, false, 2, new int[]{5, 7});
         building1Apartments[2] = new StandardApartment(202, 85, false, 1, new int[]{6});
         building1Apartments[3] = new StandardApartment(301, 75, false, 1, new int[]{4});
-        building1Apartments[4] = new StandardApartment(302, 90, false, 2, new int[]{5,5});
+        building1Apartments[4] = new StandardApartment(302, 90, false, 2, new int[]{5, 5});
         building1Apartments[5] = new Penthouse(401, 210, false, 60);
 
         Building building1 = new Building("123 Main St", building1Apartments);
@@ -35,18 +35,18 @@ public class Main {
         Apartment[] building2Apartments = new Apartment[B_SIZE];
         building2Apartments[0] = new GardenApartment(101, 100, false, 40, false);
         building2Apartments[1] = new StandardApartment(201, 70, false, 1, new int[]{5});
-        building2Apartments[2] = new StandardApartment(202, 80, false, 2, new int[]{6,4});
+        building2Apartments[2] = new StandardApartment(202, 80, false, 2, new int[]{6, 4});
         building2Apartments[3] = new StandardApartment(301, 75, false, 1, new int[]{5});
-        building2Apartments[4] = new StandardApartment(302, 85, false, 2, new int[]{5,5});
+        building2Apartments[4] = new StandardApartment(302, 85, false, 2, new int[]{5, 5});
         building2Apartments[5] = new Penthouse(401, 220, false, 55);
 
         Building building2 = new Building("456 Oak Ave", building2Apartments);
 
         Apartment[] building3Apartments = new Apartment[B_SIZE];
         building3Apartments[0] = new GardenApartment(101, 130, false, 60, true);
-        building3Apartments[1] = new StandardApartment(201, 78, false, 2, new int[]{4,5});
+        building3Apartments[1] = new StandardApartment(201, 78, false, 2, new int[]{4, 5});
         building3Apartments[2] = new StandardApartment(202, 82, false, 1, new int[]{6});
-        building3Apartments[3] = new StandardApartment(301, 76, false, 2, new int[]{5,4});
+        building3Apartments[3] = new StandardApartment(301, 76, false, 2, new int[]{5, 4});
         building3Apartments[4] = new StandardApartment(302, 88, false, 1, new int[]{5});
         building3Apartments[5] = new Penthouse(401, 200, false, 50);
 
@@ -79,8 +79,11 @@ public class Main {
 
             switch (choice) {
                 case 1:
-                    // TODO
-                    break;
+                    int count = 0;
+                    for (int i = 0; i < people.length; i++) {
+                        count = people[i].countType("StandardApartment") > 0 ? count + 1 : count;
+                    }
+                    System.out.println("Number f people with Standarda partment: " + count);
 
                 case 2:
                     // TODO

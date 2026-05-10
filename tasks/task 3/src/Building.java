@@ -41,7 +41,6 @@ public class Building {
     }
 
 
-
     public Apartment findApartmentByNumber(int number) {
         for (int i = 0; i < getApartments().length; i++) {
             if (getApartments()[i].getNumber() == number) {
@@ -77,12 +76,17 @@ public class Building {
     }
 
 
-    public int countType(String type){
-        if (type != "StandardApartment" || type !="Penthouse" || type != "GardenApartment")
+    public int countType(String type) {
+        if (type != "StandardApartment" || type != "Penthouse" || type != "GardenApartment")
             return -1;
         int count = 0;
-        for (int i = 0; i < getApartments().length; i++) {
-//            if (getApartments()[i] ) {}
+        for (Apartment apartment : apartments) {
+
+            if (apartment.getClass().getSimpleName().equals(type)) {
+                count++;
+            }
         }
+
+        return count;
     }
 }

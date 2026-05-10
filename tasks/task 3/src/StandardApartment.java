@@ -1,10 +1,13 @@
 public class StandardApartment extends Apartment {
 
-    private int[] balconiesSize = new int[2];
+    private int[] balconiesSize;
 
-    public StandardApartment(int number, int area, boolean isSold, int[] balconiesSize) {
+    public StandardApartment(int number, int area, boolean isSold, int numberOfBalconies, int[] balconiesSize) {
         super(number, area, isSold);
-        this.balconiesSize = balconiesSize;
+        this.balconiesSize = new int[numberOfBalconies];
+        for (int i = 0; i < numberOfBalconies; i++) {
+            this.balconiesSize[i] = balconiesSize[i];
+        }
     }
 
     public StandardApartment(StandardApartment standardApartment) {
