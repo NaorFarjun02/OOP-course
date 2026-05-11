@@ -1,13 +1,182 @@
+import java.util.Arrays;
 import java.util.Scanner;
 
+/**
+ * Entry point for the Real Estate Management System.
+ * Handles the user interface, menu logic, and coordinates between People, Buildings, and Apartments.
+ */
 public class Main {
 
     static final int NUM_BUILDINGS = 3;
     static final int NUM_PEOPLE = 4;
     static final int B_SIZE = 6;
+    static Scanner input = new Scanner(System.in);
 
+    /**
+     * Menu Option 2: Prompts for address and number to find a specific apartment.
+     *
+     * @param buildings The array of buildings to search in.
+     */
+    private static void menu_2(Building[] buildings) {
+        System.out.print("Enter address: ");
+        String address = input.nextLine();
+        System.out.print("Enter apartment number: ");
+        int number = input.nextInt();
+        input.nextLine();
+        for (int i = 0; i < buildings.length; i++) {
+            if (buildings[i].getAddress().equals(address)) {
+                System.out.println(buildings[i].findApartmentByNumber(number));
+                break;
+            }
+        }
+    }
+
+    /**
+     * Utility method to get the simple class name of an apartment.
+     *
+     * @param apartment The apartment to check.
+     * @return The class name as a String.
+     */
+    private static String getAptType(Apartment apartment) {
+        return apartment.getClass().getSimpleName();
+    }
+
+    /**
+     * Menu Option 3: Prints all available standard apartments across all buildings.
+     *
+     * @param buildings The array of buildings to check.
+     */
+    private static void menu_3(Building[] buildings) {
+        System.out.println("Available Standart apartments:");
+        for (int i = 0; i < buildings.length; i++) {
+            Apartment[] apt = buildings[i].getApartments();
+            System.out.println("\nBuilding-" + (i + 1) + " Address:" + buildings[i].getAddress());
+            for (int j = 0; j < apt.length; j++) {
+                if (getAptType(apt[j]) == "StandardApartment" && !apt[j].isSold()) {
+                    System.out.println(apt[j]);
+                }
+            }
+            System.out.println();
+        }
+    }
+
+    /**
+     * Menu Option 4: Executes a purchase flow including budget check and buyer registration.
+     *
+     * @param buildings Array of buildings.
+     * @param people    Array of current people/potential buyers.
+     */
+    private static Person[] menu_4(Building[] buildings, Person[] people) {
+        System.out.print("Enter first name: ");
+        String firstName = input.nextLine();
+        System.out.print("Enter last name: ");
+        String lastName = input.nextLine();
+        int personIndex = 0;
+        int budget = -1;
+        for (int i = 0; i < people.length; i++) {
+            if (people[i].getName().equals(firstName + " " + lastName)) {
+                personIndex = i;
+                System.out.print("Enter your budget: ");
+                budget = input.nextInt();
+                input.nextLine();
+                break;
+            }
+        }
+        if (budget == -1) {
+            Person[] newPeople = Arrays.copyOf(people, people.length + 1);
+            newPeople[people.length] = new Person(firstName, lastName);
+            personIndex = people.length;
+            people = newPeople;
+            System.out.print("Enter your budget: ");
+            budget = input.nextInt();
+            input.nextLine();
+        }
+
+        int numOfAptToBuy = 0;
+        for (int i = 0; i < buildings.length; i++) {
+            numOfAptToBuy += buildings[i].printAptToBuyByBudget(budget);
+        }
+        if (numOfAptToBuy > 0) {
+            System.out.print("Enter the address of the building you want to buy an apartment in: ");
+            String add = input.nextLine();
+            System.out.print("Enter the apartment number: ");
+            int aptNumber = input.nextInt();
+            input.nextLine();
+
+            for (int i = 0; i < buildings.length; i++) {
+                if (buildings[i].getAddress().equals(add)) {
+                    if (buildings[i].buyApartmentByNumber(aptNumber)) {
+                        people[personIndex].addApartment(buildings[i].findApartmentByNumber(aptNumber));
+                        //If the but was ok then add the apt to person data
+                    }
+                }
+            }
+        }
+
+        return people;
+    }
+
+    /**
+     * Menu Option 5: Prints details of the last apartment (often Penthouse) in each building.
+     *
+     * @param buildings Array of buildings.
+     */
+    private static void menu_5(Building[] buildings) {
+        for (Building b : buildings) {
+            System.out.println(b.getApartments()[b.getApartments().length - 1]);
+        }
+    }
+
+    /**
+     * Menu Option 6: Finds and prints details of the person with the highest property value.
+     *
+     * @param people Array of Person objects.
+     */
+    private static void menu_6(Person[] people) {
+        Person person = null;
+        for (int i = 0; i < people.length; i++) {
+            if (person == null || people[i].getTotalPropertyValue() >= person.getTotalPropertyValue()) {
+                person = people[i];
+            }
+        }
+        if (person != null) {
+            person.printOwnershipDetails();
+        }
+    }
+
+    /**
+     * Menu Option 7: Prints the most expensive apartment for each building.
+     *
+     * @param buildings Array of buildings.
+     */
+    private static void menu_7(Building[] buildings) {
+        for (Building b : buildings) {
+            b.printMostExpensiveApt();
+        }
+    }
+
+    /**
+     * Menu Option 8: Prints available Garden Apartments that have a pool.
+     *
+     * @param buildings Array of buildings.
+     */
+    private static void menu_8(Building[] buildings) {
+        for (Building b : buildings) {
+            if (b.getApartments()[0] instanceof GardenApartment) {
+                GardenApartment gApt = (GardenApartment) b.getApartments()[0];
+                if (!gApt.isSold() && gApt.isHasPool()) {
+                    System.out.println(gApt);
+                }
+            }
+        }
+    }
+
+    /**
+     * Main execution method. Initializes data and manages the interactive menu.
+     *
+     * @param args Command line arguments.
+     */
     public static void main(String[] args) {
-
         // ============================
         // People
         // ============================
@@ -83,34 +252,35 @@ public class Main {
                     for (int i = 0; i < people.length; i++) {
                         count = people[i].countType("StandardApartment") > 0 ? count + 1 : count;
                     }
-                    System.out.println("Number f people with Standarda partment: " + count);
+                    System.out.println("Number 0f people with Standarda partment: " + count);
+                    break;
 
                 case 2:
-                    // TODO
+                    menu_2(buildings);
                     break;
 
                 case 3:
-                    // TODO
+                    menu_3(buildings);
                     break;
 
                 case 4:
-                    // TODO
+                    people = menu_4(buildings, people);
                     break;
 
                 case 5:
-                    // TODO
+                    menu_5(buildings);
                     break;
 
                 case 6:
-                    // TODO
+                    menu_6(people);
                     break;
 
                 case 7:
-                    // TODO
+                    menu_7(buildings);
                     break;
 
                 case 8:
-                    // TODO
+                    menu_8(buildings);
                     break;
 
                 case 9:
@@ -123,5 +293,7 @@ public class Main {
 
         } while (choice != 9);
 
+
     }
+
 }
