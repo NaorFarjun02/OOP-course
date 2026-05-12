@@ -1,3 +1,8 @@
+package apartments2ex;
+
+// Assignment: 2
+// Author: Naor Farjun, ID: 213431505
+
 /**
  * Abstract base class representing a generic Apartment.
  * Defines common properties such as number, area, and sales status.

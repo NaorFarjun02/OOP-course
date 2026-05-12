@@ -1,6 +1,10 @@
+package apartments2ex;
+
 import java.util.Arrays;
 import java.util.Scanner;
 
+// Assignment: 2
+// Author: Naor Farjun, ID: 213431505
 /**
  * Entry point for the Real Estate Management System.
  * Handles the user interface, menu logic, and coordinates between People, Buildings, and Apartments.

@@ -1,3 +1,7 @@
+package apartments2ex;
+
+// Assignment: 2
+// Author: Naor Farjun, ID: 213431505
 /**
  * Represents a specialized Apartment that includes a garden and potentially a pool.
  * Extends the basic Apartment class.

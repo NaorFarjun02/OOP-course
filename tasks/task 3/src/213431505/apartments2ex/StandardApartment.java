@@ -1,3 +1,7 @@
+package apartments2ex;
+
+// Assignment: 2
+// Author: Naor Farjun, ID: 213431505
 /**
  * Represents a standard apartment that extends the base {@link Apartment} class.
  *

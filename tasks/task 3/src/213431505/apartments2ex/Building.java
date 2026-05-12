@@ -1,3 +1,8 @@
+package apartments2ex;
+
+
+// Assignment: 2
+// Author: Naor Farjun, ID: 213431505
 /**
  * Represents a residential building with a specific address and a collection of apartments.
  * This class provides methods to manage and query apartments within the building.

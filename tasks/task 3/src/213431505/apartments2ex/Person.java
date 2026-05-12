@@ -1,3 +1,7 @@
+package apartments2ex;
+
+// Assignment: 2
+// Author: Naor Farjun, ID: 213431505
 /**
  * Represents a person who can own one or more apartments.
  *
